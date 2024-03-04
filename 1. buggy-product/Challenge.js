@@ -4,6 +4,19 @@
 
 function lastBugFreeVersion(versions) {
   // Your implementation here
+  let left = 0;
+  let right = versions.length - 1;
+  while (left < right) {
+    let mid = left + Math.floor((right - left) / 2);
+    let isBad = versions[mid] === 1;
+    if (isBad) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return left;
 }
 
 lastBugFreeVersion([0, 0, 1, 1, 1]);
