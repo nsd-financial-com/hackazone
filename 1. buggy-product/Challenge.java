@@ -13,5 +13,18 @@ public class Challenge {
 
     public static int lastBugFreeVersion(int[] versions) {
         // Your implementation here
+        int left = 0;
+        int right = versions.length - 1;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            boolean isBad = versions[mid] == 1;
+            if (isBad) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
     }
 }
